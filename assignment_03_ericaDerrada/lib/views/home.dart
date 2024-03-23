@@ -110,6 +110,8 @@ class HomeViewState extends State<HomeView> {
                           .getCompanyInfo(symbol.toUpperCase());
                       if (companyData == null) {
                         print("Failed to obtain company information.");
+                        throw Exception(
+                            "Failed to obtain company information.");
                       } else {
                         //then get the stock data with
                         //stockService.getQuote,
@@ -117,6 +119,8 @@ class HomeViewState extends State<HomeView> {
                         Map<String, dynamic>? companyQuote =
                             await stockService.getQuote(symbol.toUpperCase());
                         if (companyQuote == null) {
+                          print("Failed to obtain company quote.");
+                          throw Exception("Failed to obtain company quote.");
                         } else {
                           //then if it is not null,
                           //dig out the symbol, companyName, and latestPrice,
